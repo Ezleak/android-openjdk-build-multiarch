@@ -5,7 +5,7 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build_android:
     strategy:
-      mtrix:
+      matrix:
         arch: [ "aarch32", "aarch64", "x86", "x86_64" ]
       fail-fast: false
 
