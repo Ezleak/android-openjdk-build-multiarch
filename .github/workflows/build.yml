@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3.5.3
     - name: Build with CI build script
       run: bash "ci_build_arch_${{matrix.arch}}.sh"
     - name: Upload JDK build output
@@ -31,6 +31,39 @@ jobs:
       with:
         name: "jre21-debuginfo-${{matrix.arch}}"
         path: dizout
+
+  build_iosport:
+    name: "Build for iOS aarch64"
+    runs-on: MacOS-latest
+    continue-on-error: true
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3.5.3
+
+    - name: Build with CI build script
+      run: |
+        export PATH=/opt/procursus/bin:/opt/homebrew/bin:$PATH
+        export BUILD_IOS=1
+        bash "ci_build_arch_aarch64.sh"
+
+    - name: Upload JDK build output
+      uses: actions/upload-artifact@v2
+      with:
+        name: "jdk21-ios-aarch64"
+        path: jdk21*.tar.xz
+
+    - name: Upload JRE build output
+      uses: actions/upload-artifact@v2
+      with:
+        name: 'jre21-ios-aarch64'
+        path: jre21*.tar.xz
+
+    - name: Upload JRE debuginfo build output
+      uses: actions/upload-artifact@v2
+      with:
+        name: "jre21-ios-debuginfo-aarch64"
+        path: dizout
+
 
   pojav:
     needs: build_android
