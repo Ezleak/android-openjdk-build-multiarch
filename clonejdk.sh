@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 
-git clone --depth 1 https://github.com/openjdk/jdk11u-dev openjdk
+git clone -b master --depth 1 https://github.com/openjdk/jdk11u-dev openjdk
