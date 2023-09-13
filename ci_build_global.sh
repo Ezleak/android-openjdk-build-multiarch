@@ -25,3 +25,4 @@ fi
 ./buildjdk.sh
 ./removejdkdebuginfo.sh
 ./tarjdk.sh
+./get_source.sh
