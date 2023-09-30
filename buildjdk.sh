@@ -73,7 +73,7 @@ fi
 # fix building libjawt
 ln -s -f $CUPS_DIR/cups $ANDROID_INCLUDE/
 
-cd openjdk
+cd openj9
 
 # Apply patches
 git reset --hard
