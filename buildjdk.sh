@@ -73,8 +73,6 @@ fi
 # fix building libjawt
 ln -s -f $CUPS_DIR/cups $ANDROID_INCLUDE/
 
-cd openj9
-
 # Apply patches
 git reset --hard
 if [ "$BUILD_IOS" != "1" ]; then
